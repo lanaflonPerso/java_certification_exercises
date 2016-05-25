@@ -40,3 +40,24 @@ interface SomeInterface {
 	/* As for enums inside classe, enums inside interface can be marked as static */
 	static enum EnumInsideInterfaceCanBeStatic {VAL_1, VAL_2}
 }
+
+enum EnumWithConstantSpecificClassBody {
+	VAL_1(1), VAL_2(2), VAL_N(999) {
+		/* This stuff (something like anonymous class)
+		 * is called "constant spacific class body" */
+		public void printNumber() {
+			System.out.println("This is the last item");
+		}
+	/* } */
+	}; /* <-- this semicolon is REQUIRED (!!!) in case of constant spacific class body */
+	
+	EnumWithConstantSpecificClassBody(int number) {
+		this.number = number;
+	}
+	
+	private int number;
+	
+	public void printNumber() {
+		System.out.println("This is an item #" + number);
+	}
+}
